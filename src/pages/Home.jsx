@@ -61,16 +61,27 @@ function Home() {
       {/* Contact */}
       <section id="contact" className="section">
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:colin.phung@hotmail.com">colin.phung@hotmail.com</a></p>
-        <p>
-          LinkedIn: <a href="https://www.linkedin.com/in/colin-phung-418b5b212/">
-            colin-phung-418b5b212
+        <div className="contact-buttons">
+          <a className="contact-button" href="mailto:colin.phung@hotmail.com">
+            Email
           </a>
-        </p>
-        <p>Github: <a href="https://github.com/77936" target="_blank" rel="noopener noreferrer">
-          github.com/77936
-        </a>
-        </p>
+          <a
+            className="contact-button"
+            href="https://www.linkedin.com/in/colin-phung-418b5b212/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a
+            className="contact-button"
+            href="https://github.com/77936"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </div>
       </section>
     </main>
   );

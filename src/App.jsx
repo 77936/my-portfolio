@@ -1,19 +1,33 @@
-import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Blog from './pages/Blog';
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!location.hash) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    const section = document.querySelector(location.hash);
+
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [location]);
+
   return (
     <div className="app">
       <nav className="navbar">
         <Link to="/" className="nav-logo">Colin Phung</Link>
         <div className="nav-links">
-          {/* Use anchor links for sections in Home, Link for separate pages */}
           <Link to="/" className="nav-link">Home</Link>
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
+          <Link to="/#about" className="nav-link">About</Link>
+          <Link to="/#projects" className="nav-link">Projects</Link>
+          <Link to="/#contact" className="nav-link">Contact</Link>
           <Link to="/blog" className="nav-link">Blog</Link>
         </div>
       </nav>
@@ -21,7 +35,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
-        {/* Only keep routes for actual separate pages */}
       </Routes>
     </div>
   );
